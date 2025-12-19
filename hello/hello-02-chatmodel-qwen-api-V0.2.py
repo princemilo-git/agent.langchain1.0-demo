@@ -1,0 +1,23 @@
+from langchain_openai import ChatOpenAI
+from dotenv import load_dotenv
+import os
+
+load_dotenv("./.env")
+
+# messages = [
+#     {'role': 'system', 'content': 'You are a helpful assistant.'},
+#     {'role': 'user', 'content': '你是谁？'}
+# ]
+
+model = ChatOpenAI(
+    model="qwen-plus",  # DashScope 支持的模型名
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+    api_key=os.getenv("DASHSCOPE_API_KEY"),  # 必须显式传入或设环境变量
+    # messages=messages,
+    temperature=0.7
+)
+
+print("AI 正在生成回答 非流式输出：")
+response = model.invoke("来一首李白的唐诗")
+print(response.content)
+print("\nAI 完成回答")
