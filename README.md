@@ -44,7 +44,7 @@ F --> G[优化-缓存/成本/安全]
   
 4. **安装 Git**
   
-  [https://git-scm.com/](https://git-scm.com/) `I`
+  [https://git-scm.com/](https://git-scm.com/)
   
 
 ---
