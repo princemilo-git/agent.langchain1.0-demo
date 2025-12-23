@@ -190,3 +190,26 @@ pip install langchain-chroma
 ```
 
 ---
+
+## 7. git上传与下载
+
+1. 上传
+```bash
+pip freeze > requirements.txt
+git remote add origin https://github.com/princemilo-git/agent.langchain1.0-demo.git
+git init
+git add .
+git commit -m 'init'
+git branch -M main
+git push -u origin main
+```
+
+2. 下载
+```bash
+git clone https://github.com/princemilo-git/agent.langchain1.0-demo.git
+```
+
+3. 使用，一次性导入环境依赖
+```bash
+pip install -r requirments.txt 
+```
