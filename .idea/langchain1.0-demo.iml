@@ -5,4 +5,8 @@
     <orderEntry type="jdk" jdkName="C:\Users\xing12.liu\AppData\Local\anaconda3\envs\langchain1.0-py311" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
+  <component name="PyDocumentationSettings">
+    <option name="format" value="PLAIN" />
+    <option name="myDocStringFormat" value="Plain" />
+  </component>
 </module>
