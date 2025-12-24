@@ -1,18 +1,8 @@
+## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\tutorials\RAG-agent\01-agent-basic.py
+
+# agent基本用法-工具调用
+
 from langchain.agents import create_agent
-from langchain_openai import ChatOpenAI
-
-from dotenv import load_dotenv
-load_dotenv("./env/.env")
-# agent基本用法-工具
-
-# 指定模型
-import os
-model = ChatOpenAI(
-    model="qwen-plus",  # DashScope 支持的模型名
-    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
-    api_key=os.getenv("DASHSCOPE_API_KEY"),  # 必须显式传入或设环境变量
-    temperature=0.7
-)
 
 # 定义工具
 def get_weather(city: str) -> str:
@@ -22,9 +12,9 @@ def get_weather(city: str) -> str:
 tools=[get_weather]
 
 # 创建Agent
-agent_base = create_agent(
-    model=model,
-    tools=tools,
+agent = create_agent(
+    model="ollama:qwen:1.8b", # 本地模型
+    tools=tools
 )
 
 # print(agent_base)

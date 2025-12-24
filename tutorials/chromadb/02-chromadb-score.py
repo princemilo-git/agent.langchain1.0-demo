@@ -3,6 +3,8 @@ from langchain_chroma import Chroma
 from langchain_core.documents import Document
 from openai import vector_stores
 
+# chromadb 工具-创建向量库的collection集合(四类评分方式)，添加document文档
+
 # 嵌入模型
 embedding = OllamaEmbeddings(model="qwen3-embedding:4b")
 
@@ -43,12 +45,12 @@ def indexing(docs):
         ids = vector_store.add_documents(docs)
         print(f"\n向量库：{vector_store._collection.name}，\n{ids}")
 
-# docs=[
-#     Document(page_content="小米手机很好用"),
-#     Document(page_content="我国山西地区盛产小米")
-# ]
-#
-# indexing(docs)
+docs=[
+    Document(page_content="小米手机很好用"),
+    Document(page_content="我国山西地区盛产小米")
+]
+
+indexing(docs)
 
 def query_with_score(query):
     for i in range(len(score_measures)):

@@ -29,3 +29,5 @@ print(response.content)
 print("\n" + "AI 完成回答")  # 换行
 
 # 预期效果：出自《水调歌头·明月几时有》。这首词描写了……
+
+## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\hello\01-chatmodel-ollama-local-V0.2.py

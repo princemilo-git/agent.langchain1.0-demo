@@ -1,5 +1,7 @@
 import chromadb
 
+# chromadb 工具-查看删除向量库的collection集合
+
 # 列出向量库的collections和记录
 def list_collections(db_path):
     client = chromadb.PersisitentClient(db_path)

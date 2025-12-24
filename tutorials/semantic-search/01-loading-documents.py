@@ -1,10 +1,7 @@
 # 语义检索
+## 从PDF到向量库，四种语义搜索方法
 
-# pip install pypdf
-# pip install langchain-community pypdf
-# conda install langchain-community pypdf -c conda-forge
-
-## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python ..\tutorials\semantic-search\semantic-search-1-Loading documents.py
+## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\tutorials\semantic-search\semantic-search-1-Loading documents.py
 
 ## 1. 读取PDF，按照页来管理，Document，List[Document]。
 from langchain_community.document_loaders import PyPDFLoader

@@ -150,6 +150,8 @@ pip install langchain-community
 ```bash
 ollama pull deepseek-r1:1.5b
 
+ollama pull qwen:1.8b
+
 ollama pull llama3.2:3b
 ```
 
@@ -159,16 +161,40 @@ ollama pull llama3.2:3b
 ollama pull nomic-embed-text
 ```
 
+```bash
+ollama pull qwen3-embedding:4b
+```
+
 - **查看已安装模型**
 
 ```bash
 ollama list
 ```
 
-3. **安装 LangChain-Ollama 集成包**
+3. **删除模型**
+
+```bash
+ollama rm qwen3-embedding:4b
+```
+
+4. **安装 LangChain-Ollama 集成包**
 
 ```bash
 pip install langchain-ollama
+```
+
+**安装 pdf 依赖包**
+
+```bash
+pip install pypdf
+pip install langchain-community pypdf
+conda install langchain-community pypdf -c conda-forge
+```
+
+5. **启动 Ollama**
+
+```bash
+ollama serve
 ```
 
 ---
