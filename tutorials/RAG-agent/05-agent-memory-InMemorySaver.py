@@ -1,7 +1,7 @@
-## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\tutorials\RAG-agent\04-agent-memory.py
-from anyio.lowlevel import checkpoint
+## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\tutorials\RAG-agent\05-agent-memory-InMemorySaver.py
+
 # 消息列表的内存管理
-# 通过 config 实现多绘画管理
+# 通过 config 实现多会话管理
 
 from langchain.agents import create_agent
 from langgraph.checkpoint.memory import InMemorySaver
