@@ -1,4 +1,4 @@
-## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\tutorials\RAG-agent\01-agent-basic.py
+## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\tutorials\RAG-agent\02-agent-basic-tool.py
 
 # agent基本用法-工具调用
 
@@ -13,25 +13,25 @@ tools=[get_weather]
 
 # 创建Agent
 agent = create_agent(
-    model="ollama:qwen:1.8b", # 本地模型
+    model="ollama:llama3.2:3b", # qwen:1.8b", # "ollama:deepseek-r1:1.5b", # 本地模型
     tools=tools
 )
 
 # print(agent_base)
 # <langgraph.graph.state.CompiledStateGraph object at 0x000001A4B2E6AD90>
-print(agent_base.nodes)
+print(agent.nodes)
 # {
 #   '__start__': <langgraph.pregel._read.PregelNode object at 0x000001A4B344C350>,
 #   'model': <langgraph.pregel._read.PregelNode object at 0x000001A4B344C5D0>,
 #   'tools': <langgraph.pregel._read.PregelNode object at 0x000001A4B3475F10>
 # }
 
-results = agent_base.invoke({
-    "messages":[{
+results = agent.invoke(
+    {"messages":[{
         "role":"user",
         "content":"what is the weather in Beijing"
-    }]
-})
+    }]}
+)
 
 messages = results['messages']
 print(f"历史消息： {len(messages)} 条")

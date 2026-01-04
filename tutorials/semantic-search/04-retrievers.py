@@ -1,4 +1,5 @@
 # 语义检索
+# 用检索器进行相似度查询
 
 from langchain_ollama import OllamaEmbeddings
 

@@ -1,4 +1,4 @@
-## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\tutorials\RAG-agent\01-agent-basic.py
+## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\tutorials\RAG-agent\03-agent-basic-stream.py
 
 # agent基本用法-流式输出，message by message 和 token by token两种方式
 
@@ -13,7 +13,7 @@ tools=[get_weather]
 
 # 创建Agent
 agent = create_agent(
-    model="ollama:qwen:1.8b", # 本地模型
+    model="ollama:llama3.2:3b", # qwen:1.8b", # "ollama:deepseek-r1:1.5b", # 本地模型
     tools=tools
 )
 
@@ -39,8 +39,7 @@ for chunk in agent.stream(
     },
     stream_mode="messages" # token by token
 ):
-    print( chunk[0].content, end="\n")
-
+    print(chunk[0].content, end="\n")
 
 #
 # It's sunny in Beijing~
