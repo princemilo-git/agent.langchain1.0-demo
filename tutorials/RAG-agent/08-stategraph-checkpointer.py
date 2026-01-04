@@ -1,3 +1,7 @@
+# langgraph 状态管理器 checkpointer 详细解析
+
+## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\tutorials\RAG-agent\08-stategraph-checkpointer.py
+
 # checkpointer：检查点管理器。
 # checkpoint：检查点，保存对话状态。作用：状态图的总体状态快照。
 # thread_id：会话 ID，用于标识不同的对话会话。作用：记忆管理（对话回溯），时间旅行（time travel）、人工在环审批（human-in-the-loop）
