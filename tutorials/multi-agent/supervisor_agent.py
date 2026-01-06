@@ -1,44 +1,40 @@
+# 思路说明
+# agent ： model，tools，system_prompt，checkpointer，middleware
+## 多agent，langchain1.0 推荐两种方式
+# 1. supervisor agent，集中式
+#    user => supervisor agent => worker agents
+# 2. handoff agent，轮换式 # 多个agent，分布式
+#    user => agent1 => user => agent2
 
-## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\tutorials\multi-agent\01-calendar-agent.py
+# 1. supervisor agent示例
+# 步骤：
+# 1. 创建2个 work agent，有各自的 tools
+# 2. 把这两个 agent 封装未2个新的 tool
+# 3. 创建一个 supervisor agent，把2个新的 tool 添加到 agent 中
 
+## 内容
+# 1. supervisor agent，个人助理
+# 2. 创建2个 work agent，calendar agent，email agent
+
+# 实现步骤
 # 1. Define tools
-from langchain.tools import tool
+# 2. Create specialized sub-agents
+# 	Create a calendar agent
+# 	Create an email agent
+# 3. Wrap sub-agents as tools
+# 4. Create the supervisor agent
+# 5. Use the supervisor
+# 	Example 1: Simple single-domain request
+# 	Example 2: Complex multi-domain request
+# 	Complete working example
+# 	Understanding the architecture
+# 6. Add human-in-the-loop review
+# 7. Advanced: Control information flow
+# 	Pass additional conversational context to sub-agents
+# 	Control what supervisor receives
+# 8. Key takeaways
 
-@tool
-def create_calendar_event(
-    title: str,
-    start_time: str,       # ISO format: "2024-01-15T14:00:00"
-    end_time: str,         # ISO format: "2024-01-15T15:00:00"
-    attendees: list[str],  # email addresses
-    location: str = ""
-) -> str:
-    """Create a calendar event. Requires exact ISO datetime format."""
-    # Stub: In practice, this would call Google Calendar API, Outlook API, etc.
-    return f"Event created: {title} from {start_time} to {end_time} with {len(attendees)} attendees"
-
-
-@tool
-def send_email(
-    to: list[str],  # email addresses
-    subject: str,
-    body: str,
-    cc: list[str] = []
-) -> str:
-    """Send an email via email API. Requires properly formatted addresses."""
-    # Stub: In practice, this would call SendGrid, Gmail API, etc.
-    return f"Email sent to {', '.join(to)} - Subject: {subject}"
-
-
-@tool
-def get_available_time_slots(
-    attendees: list[str],
-    date: str,  # ISO format: "2024-01-15"
-    duration_minutes: int
-) -> list[str]:
-    """Check calendar availability for given attendees on a specific date."""
-    # Stub: In practice, this would query calendar APIs
-    return ["09:00", "14:00", "16:00"]
-
+## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\tutorials\multi-agent\supervisor_agent.py
 
 # 2. Create specialized sub-agents
 from langchain.chat_models import init_chat_model
@@ -55,61 +51,12 @@ model = init_chat_model(
     temperature=0.7
 )
 
-## Create a calendar agent
-from langchain.agents import create_agent
-CALENDAR_AGENT_PROMPT = (
-    "You are a calendar scheduling assistant. "
-    "Parse natural language scheduling requests (e.g., 'next Tuesday at 2pm') "
-    "into proper ISO datetime formats. "
-    "Use get_available_time_slots to check availability when needed. "
-    "Use create_calendar_event to schedule events. "
-    "Always confirm what was scheduled in your final response."
-)
-
-calendar_agent = create_agent(
-    model,
-    tools=[get_available_time_slots, create_calendar_event],
-    system_prompt=CALENDAR_AGENT_PROMPT,
-)
-
-print("\ntest calendar agent")
-
-# query = "Schedule a team meeting next Tuesday at 2pm for 1 hour"
-query = "Schedule a team meeting [designteam@example.com] on 2026-1-8 at 2pm for 1 hour"
-for step in calendar_agent.stream(
-    {"messages": [{"role": "user", "content": query}]}
-):
-    for update in step.values():
-        for message in update.get("messages", []):
-            message.pretty_print()
-
-## Create an email agent
-EMAIL_AGENT_PROMPT = (
-    "You are an email assistant. "
-    "Compose professional emails based on natural language requests. "
-    "Extract recipient information and craft appropriate subject lines and body text. "
-    "Use send_email to send the message. "
-    "Always confirm what was sent in your final response."
-)
-
-email_agent = create_agent(
-    model,
-    tools=[send_email],
-    system_prompt=EMAIL_AGENT_PROMPT,
-)
-
-print("\ntest email agent")
-
-# query = "Send the design team a reminder about reviewing the new mockups"
-query = "Send an mail to  the design team ['designteam@example.com'] about reviewing the new mockups"
-for step in email_agent.stream(
-    {"messages": [{"role": "user", "content": query}]}
-):
-    for update in step.values():
-        for message in update.get("messages", []):
-            message.pretty_print()
-
 # 3. Wrap sub-agents as tools
+from langchain.tools import tool
+
+from calendar_agent import calendar_agent
+from email_agent import email_agent
+
 @tool
 def schedule_event(request: str) -> str:
     """Schedule calendar events using natural language.
@@ -143,6 +90,8 @@ def manage_email(request: str) -> str:
     return result["messages"][-1].text
 
 # 4. Create the supervisor agent
+from langchain.agents import create_agent
+
 SUPERVISOR_PROMPT = (
     "You are a helpful personal assistant. "
     "You can schedule calendar events and send emails. "
@@ -174,25 +123,28 @@ print("\ntest supervisor agent：Complex multi-domain request")
 #     "Schedule a meeting with the design team next Tuesday at 2pm for 1 hour, "
 #     "and send them an email reminder about reviewing the new mockups."
 # )
-#
-# for step in supervisor_agent.stream(
-#     {"messages": [{"role": "user", "content": query}]}
-# ):
-#     for update in step.values():
-#         for message in update.get("messages", []):
-#             message.pretty_print()
+query = (
+    "Schedule a team meeting with the design team [designteam@example.com] on 2026-1-8 at 2pm for 1 hour, "
+    "Send an mail to the design team ['designteam@example.com'] about reviewing the new mockups"
+)
+
+for step in supervisor_agent.stream(
+    {"messages": [{"role": "user", "content": query}]}
+):
+    for update in step.values():
+        for message in update.get("messages", []):
+            message.pretty_print()
 
 ## Complete working example
 
 ## Understanding the architecture
 
 # 6. Add human-in-the-loop review
-# from langchain.agents import create_agent
-# from langchain.agents.middleware import HumanInTheLoopMiddleware
-# from langgraph.checkpoint.memory import InMemorySaver
-#
-# print("test agent middleware")
-#
+from langchain.agents.middleware import HumanInTheLoopMiddleware
+from langgraph.checkpoint.memory import InMemorySaver
+
+print("test agent middleware")
+
 # calendar_agent = create_agent(
 #     model,
 #     tools=[create_calendar_event, get_available_time_slots],
@@ -216,7 +168,7 @@ print("\ntest supervisor agent：Complex multi-domain request")
 #         ),
 #     ],
 # )
-#
+
 # supervisor_agent = create_agent(
 #     model,
 #     tools=[schedule_event, manage_email],
@@ -224,9 +176,13 @@ print("\ntest supervisor agent：Complex multi-domain request")
 #     checkpointer=InMemorySaver(),
 # )
 #
+# # query = (
+# #     "Schedule a meeting with the design team next Tuesday at 2pm for 1 hour, "
+# #     "and send them an email reminder about reviewing the new mockups."
+# # )
 # query = (
-#     "Schedule a meeting with the design team next Tuesday at 2pm for 1 hour, "
-#     "and send them an email reminder about reviewing the new mockups."
+#     "Schedule a team meeting with the design team [designteam@example.com] on 2026-1-8 at 2pm for 1 hour, "
+#     "Send an mail to the design team ['designteam@example.com'] about reviewing the new mockups"
 # )
 #
 # config = {"configurable": {"thread_id": "6"}}
@@ -289,8 +245,8 @@ print("\ntest supervisor agent：Complex multi-domain request")
 #             interrupt_ = update[0]
 #             interrupts.append(interrupt_)
 #             print(f"\nINTERRUPTED: {interrupt_.id}")
-
-
+#
+#
 # # 7. Advanced: Control information flow
 # ## Pass additional conversational context to sub-agents
 # from langchain.tools import tool, ToolRuntime
