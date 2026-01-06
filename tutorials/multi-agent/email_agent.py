@@ -48,13 +48,16 @@ email_agent = create_agent(
     system_prompt=EMAIL_AGENT_PROMPT,
 )
 
-print("\ntest email agent")
-#
-# # query = "Send the design team a reminder about reviewing the new mockups"
-# query = "Send an mail to the design team ['designteam@example.com'] about reviewing the new mockups"
-# for step in email_agent.stream(
-#     {"messages": [{"role": "user", "content": query}]}
-# ):
-#     for update in step.values():
-#         for message in update.get("messages", []):
-#             message.pretty_print()
+def  test_email_agent():
+    print("\ntest email agent")
+
+    # query = "Send the design team a reminder about reviewing the new mockups"
+    query = "Send an mail to the design team ['designteam@example.com'] about reviewing the new mockups"
+    for step in email_agent.stream(
+        {"messages": [{"role": "user", "content": query}]}
+    ):
+        for update in step.values():
+            for message in update.get("messages", []):
+                message.pretty_print()
+
+# test_email_agent()

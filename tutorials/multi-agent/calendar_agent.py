@@ -61,13 +61,16 @@ calendar_agent = create_agent(
     system_prompt=CALENDAR_AGENT_PROMPT,
 )
 
-print("\ntest calendar agent")
-#
-# # query = "Schedule a team meeting next Tuesday at 2pm for 1 hour"
-# query = "Schedule a team meeting with the design team [designteam@example.com] on 2026-1-8 at 2pm for 1 hour"
-# for step in calendar_agent.stream(
-#     {"messages": [{"role": "user", "content": query}]}
-# ):
-#     for update in step.values():
-#         for message in update.get("messages", []):
-#             message.pretty_print()
+def test_calendar_agent():
+    print("\ntest calendar agent")
+
+    # query = "Schedule a team meeting next Tuesday at 2pm for 1 hour"
+    query = "Schedule a team meeting with the design team [designteam@example.com] on 2026-1-8 at 2pm for 1 hour"
+    for step in calendar_agent.stream(
+        {"messages": [{"role": "user", "content": query}]}
+    ):
+        for update in step.values():
+            for message in update.get("messages", []):
+                message.pretty_print()
+
+# test_calendar_agent()

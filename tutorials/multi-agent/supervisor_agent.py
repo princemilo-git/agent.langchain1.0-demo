@@ -106,7 +106,7 @@ supervisor_agent = create_agent(
 )
 
 # 5. Use the supervisor
-print("\ntest supervisor agent：Simple single-domain request")
+# print("\ntest supervisor agent：Simple single-domain request")
 ## Example 1: Simple single-domain request
 # query = "Schedule a team standup for tomorrow at 9am"
 #
@@ -117,25 +117,27 @@ print("\ntest supervisor agent：Simple single-domain request")
 #         for message in update.get("messages", []):
 #             message.pretty_print()
 
-print("\ntest supervisor agent：Complex multi-domain request")
-## Example 2: Complex multi-domain request
-# query = (
-#     "Schedule a meeting with the design team next Tuesday at 2pm for 1 hour, "
-#     "and send them an email reminder about reviewing the new mockups."
-# )
-query = (
-    "Schedule a team meeting with the design team [designteam@example.com] on 2026-1-8 at 2pm for 1 hour, "
-    "Send an mail to the design team ['designteam@example.com'] about reviewing the new mockups"
-)
+def test_supervisor_agent():
+    print("\ntest supervisor agent：Complex multi-domain request")
+    ## Example 2: Complex multi-domain request
+    # query = (
+    #     "Schedule a meeting with the design team next Tuesday at 2pm for 1 hour, "
+    #     "and send them an email reminder about reviewing the new mockups."
+    # )
+    query = (
+        "Schedule a team meeting with the design team [designteam@example.com] on 2026-1-8 at 2pm for 1 hour, "
+        "Send an mail to the design team ['designteam@example.com'] about reviewing the new mockups"
+    )
 
-for step in supervisor_agent.stream(
-    {"messages": [{"role": "user", "content": query}]}
-):
-    for update in step.values():
-        for message in update.get("messages", []):
-            message.pretty_print()
+    for step in supervisor_agent.stream(
+        {"messages": [{"role": "user", "content": query}]}
+    ):
+        for update in step.values():
+            for message in update.get("messages", []):
+                message.pretty_print()
 
 ## Complete working example
+test_supervisor_agent()
 
 ## Understanding the architecture
 
@@ -143,7 +145,7 @@ for step in supervisor_agent.stream(
 from langchain.agents.middleware import HumanInTheLoopMiddleware
 from langgraph.checkpoint.memory import InMemorySaver
 
-print("test agent middleware")
+# print("test agent middleware")
 
 # calendar_agent = create_agent(
 #     model,
