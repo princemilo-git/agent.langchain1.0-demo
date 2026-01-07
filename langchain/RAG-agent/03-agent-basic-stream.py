@@ -1,4 +1,4 @@
-## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\tutorials\RAG-agent\03-agent-basic-stream.py
+## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\langchain\RAG-agent\03-agent-basic-stream.py
 
 # agent基本用法-流式输出，message by message 和 token by token两种方式
 

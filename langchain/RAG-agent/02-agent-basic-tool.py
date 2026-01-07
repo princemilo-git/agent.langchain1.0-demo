@@ -1,4 +1,4 @@
-## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\tutorials\RAG-agent\02-agent-basic-tool.py
+## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\langchain\RAG-agent\02-agent-basic-tool.py
 
 # agent基本用法-工具调用
 

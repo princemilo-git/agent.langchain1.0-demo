@@ -1,6 +1,6 @@
 # langgraph 状态管理器 checkpointer 详细解析
 
-## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\tutorials\RAG-agent\08-stategraph-checkpointer.py
+## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\langchain\RAG-agent\08-stategraph-checkpointer.py
 
 # checkpointer：检查点管理器。
 # checkpoint：检查点，保存对话状态。作用：状态图的总体状态快照。

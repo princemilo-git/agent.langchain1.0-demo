@@ -1,5 +1,5 @@
 
-## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\tutorials\multi-agent\01-calendar-agent.py
+## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\langchain\multi-agent\01-calendar-agent.py
 
 # 1. Define tools
 from langchain.tools import tool

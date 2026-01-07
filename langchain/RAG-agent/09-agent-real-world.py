@@ -1,6 +1,6 @@
 # Agent 结构化输出、运行时参数、系统提示词，综合应用开发
 
-## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\tutorials\RAG-agent\09-agent-real-world.py
+## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\langchain\RAG-agent\09-agent-real-world.py
 
 ## Build a real-world agent
 

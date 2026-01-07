@@ -25,7 +25,7 @@
 # 2）微调：用私有数据，新的数据，（标注）局部的训练，垂直行业大模型
 # 3）RAG：成本最低，时间短
 
-## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\tutorials\RAG-agent\10-RAG.py
+## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\langchain\RAG-agent\10-RAG.py
 
 from langchain.chat_models import init_chat_model
 from dotenv import load_dotenv

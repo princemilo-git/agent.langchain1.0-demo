@@ -1,0 +1,10 @@
+langsmith: 日志工具
+    1）smith.langchain.com 注册账户，申请api key
+    2）程序里边使用.env，定义环境变量
+studio：部署agent
+    1）前提 langsmith已经安装
+    2）安装 输入指令：pip install langgraph-cli
+    3）编辑 根目录下的langgraph.json，指定agent、env环境配置
+    4）启动 输入指令：langgraph dev
+    5）测试 访问：https://smith.langchain.com/studio/，切换到chat模式，进行提问交互
+agent chat-ui：和部署agent交互

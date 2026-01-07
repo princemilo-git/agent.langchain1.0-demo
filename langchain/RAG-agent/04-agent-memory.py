@@ -1,4 +1,4 @@
-## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\tutorials\RAG-agent\04-agent-memory.py
+## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\langchain\RAG-agent\04-agent-memory.py
 
 # 短期记忆管理-手动保存历史消息，并先行调用
 

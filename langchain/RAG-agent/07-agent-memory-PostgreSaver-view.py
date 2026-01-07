@@ -1,5 +1,5 @@
 
-## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\tutorials\RAG-agent\07-agent-memory-PostgreSaver-view.py
+## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\langchain\RAG-agent\07-agent-memory-PostgreSaver-view.py
 
 # 通过 中间件-PostgreSQL 查看会话消息
 

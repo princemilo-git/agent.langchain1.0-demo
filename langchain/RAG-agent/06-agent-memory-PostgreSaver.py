@@ -22,7 +22,7 @@
 # 本地环境
 # pip install psycopg langgraph-checkpoint-postgre
 
-## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\tutorials\RAG-agent\06-agent-memory-PostgreSaver.py
+## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\langchain\RAG-agent\06-agent-memory-PostgreSaver.py
 
 # 通过 中间件-PostgreSQL 实现多会话管理
 

@@ -34,7 +34,7 @@
 # 	Control what supervisor receives
 # 8. Key takeaways
 
-## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\tutorials\multi-agent\supervisor_agent.py
+## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\langchain\multi-agent\supervisor_agent.py
 
 # 2. Create specialized sub-agents
 from dotenv import load_dotenv
@@ -140,7 +140,7 @@ def test_supervisor_agent():
                 message.pretty_print()
 
 ## Complete working example
-# test_supervisor_agent()
+test_supervisor_agent()
 
 ## Understanding the architecture
 

@@ -1,4 +1,4 @@
-## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\tutorials\RAG-agent\05-agent-memory-InMemorySaver.py
+## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\langchain\RAG-agent\05-agent-memory-InMemorySaver.py
 
 # 消息列表的内存管理
 # 通过 config 实现多会话管理

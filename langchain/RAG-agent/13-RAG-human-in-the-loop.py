@@ -11,7 +11,7 @@
 ## 记忆管理：checkpointer
 ## 结构化输出：response_format -- new
 
-## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\tutorials\RAG-agent\13-RAG-human-in-the-loop.py
+## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\langchain\RAG-agent\13-RAG-human-in-the-loop.py
 
 
 from langchain.agents import create_agent

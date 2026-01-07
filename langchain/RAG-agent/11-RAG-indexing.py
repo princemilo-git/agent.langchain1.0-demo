@@ -1,5 +1,5 @@
 
-## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\tutorials\RAG-agent\11-RAG-indexing.py
+## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\langchain\RAG-agent\11-RAG-indexing.py
 
 ## 1. 读取网页，Document，List[Document]。
 from langchain_community.document_loaders import WebBaseLoader
