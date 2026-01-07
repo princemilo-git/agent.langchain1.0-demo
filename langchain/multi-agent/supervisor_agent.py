@@ -140,7 +140,7 @@ def test_supervisor_agent():
                 message.pretty_print()
 
 ## Complete working example
-test_supervisor_agent()
+# test_supervisor_agent()
 
 ## Understanding the architecture
 
