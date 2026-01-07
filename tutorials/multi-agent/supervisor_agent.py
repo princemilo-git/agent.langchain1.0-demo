@@ -37,12 +37,15 @@
 ## (langchain1.0-py311) D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo>python .\tutorials\multi-agent\supervisor_agent.py
 
 # 2. Create specialized sub-agents
-from langchain.chat_models import init_chat_model
 from dotenv import load_dotenv
 import os
 
+import sys # 将当前文件所在目录加入 Python 路径
+sys.path.insert(0, os.path.dirname(__file__))
+
 load_dotenv("./env/.env")
 
+from langchain.chat_models import init_chat_model
 model = init_chat_model(
     model_provider="openai",
     model="qwen-plus",
@@ -137,7 +140,7 @@ def test_supervisor_agent():
                 message.pretty_print()
 
 ## Complete working example
-test_supervisor_agent()
+# test_supervisor_agent()
 
 ## Understanding the architecture
 
