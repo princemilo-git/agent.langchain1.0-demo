@@ -1,9 +1,27 @@
 
-# 前言
-
 `LangChain 1.0 入门学习`
 
+# 前言
+
+| 阶段  | 你能做什么？                            |
+| --- | :--- |
+| **实战入门** | 调用大模型、做简单问答、写脚本自动化                |
+| **实战高阶** | 构建企业级 AI 应用、处理私有数据、支持多工具协同、可部署可维护 |
+
+---
+
+# 一、概念
+
+- [LangGraph](https://docs.langchain.com/oss/python/langgraph/overview) - Provides the underlying graph execution and state management。提供底层图执行和状态管理。
+- [LangChain](https://docs.langchain.com/oss/python/langchain/overview) - Tools and model integrations work seamlessly with deep agents。工具和模型集成与深度代理无缝协作。
+- [LangSmith](https://docs.langchain.com/langsmith/home) - Observability, evaluation, and deployment。可观察性、评估和部署。
+
+
 > 参考文档：[https://docs.langchain.com/oss/python/learn](https://docs.langchain.com/oss/python/learn)
+
+---
+
+# 二、实战步骤
 
 ```mermaid
 graph LR
@@ -17,16 +35,7 @@ F --> G[优化-缓存/成本/安全]
 
 ---
 
-## 实战步骤
-
-| 阶段  | 你能做什么？ |
-| --- | --- |
-| **实战入门** | 调用大模型、做简单问答、写脚本自动化 |
-| **实战高阶** | 构建企业级 AI 应用、处理私有数据、支持多工具协同、可部署可维护 |
-
----
-
-# 一、安装
+# 三、安装
 
 ## 1. 基础工具
 
@@ -98,7 +107,7 @@ conda create -n my_langchain --clone langchain_env
 cd D:\Work\Workspace\AIProjects\Agent\langchain1.0-demo
 ```
 
-### 3. 启动VSC 或者 PyCharm
+### 3. 启动IDE VSCode 或者 PyCharm
 
 ```bash
 code .
@@ -124,14 +133,14 @@ pip install langchain
 pip install langchain-community
 ```
 
-> 由于你使用的是 **Anaconda 环境**，建议：
+> 安装技巧：使用的是 **Anaconda 环境**，建议
 
 | 包类型 | 推荐安装方式 |
 | --- | --- |
 | 科学计算、C 扩展包（如 `zstandard`, `pydantic-core`） | `conda install -c conda-forge` |
 | LangChain 生态（`langchain`, `langchain-openai`） | `pip install`（因更新快） |
 
-混合使用时，**先用 conda 装底层依赖，再用 pip 装上层应用**。
+> 混合使用时，**先用 conda 装底层依赖，再用 pip 装上层应用**。
 
 ---
 
@@ -177,7 +186,9 @@ ollama list
 ollama rm qwen3-embedding:4b
 ```
 
-4. **安装 LangChain-Ollama 集成包**
+4. **安装依赖包**
+
+**安装 LangChain-Ollama 集成包**
 
 ```bash
 pip install langchain-ollama
@@ -217,9 +228,11 @@ pip install langchain-chroma
 
 ---
 
-## 7. git上传与下载
+# 一、开发
 
-1. 上传
+## 1. 代码管理
+
+1. git上传
 ```bash
 pip freeze > requirements.txt
 git remote add origin https://github.com/princemilo-git/agent.langchain1.0-demo.git
@@ -230,12 +243,12 @@ git branch -M main
 git push -u origin main
 ```
 
-2. 下载
+2. git下载
 ```bash
 git clone https://github.com/princemilo-git/agent.langchain1.0-demo.git
 ```
 
-3. 使用，一次性导入环境依赖
+3. 使用git快速搭建环境，一次性导入环境依赖
 ```bash
 pip install -r requirments.txt 
 ```
