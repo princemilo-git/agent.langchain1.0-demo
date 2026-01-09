@@ -224,6 +224,7 @@ __marimo__/
 .DS_Store
 
 # db
+.langgraph_api/
 chroma_langchain_db/
 chroma_score_db/
 chroma_rag_db/
